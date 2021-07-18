@@ -188,10 +188,11 @@ object loadMemoryFromFileInline {
   def apply[T <: Data](
     memory: MemBase[T],
     fileName: String,
-    hexOrBinary: MemoryLoadFileType.FileType = MemoryLoadFileType.Hex
+    hexOrBinary: MemoryLoadFileType.FileType = MemoryLoadFileType.Hex,
+    info: String
   ): Unit = {
     annotate(new ChiselAnnotation {
-      override def toFirrtl = MemoryFileInlineAnnotation(memory.toTarget, fileName, hexOrBinary)
+      override def toFirrtl = MemoryFileInlineAnnotation(memory.toTarget, fileName, hexOrBinary, info)
     })
   }
 }
